@@ -1,6 +1,9 @@
 const express = require('express');
 const userRoutes = require('./server/user/user.route');
 const authRoutes = require('./server/auth/auth.route');
+const bookRoutes = require('./server/book/book.route');
+const expressJwt = require('express-jwt');
+const config = require('./config/config');
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -16,5 +19,8 @@ router.use('/users', userRoutes);
 
 // mount auth routes at /auth
 router.use('/auth', authRoutes);
+
+// mount book routes at /book
+router.use('/book', expressJwt({ secret: config.jwtSecret }), bookRoutes);
 
 module.exports = router;
