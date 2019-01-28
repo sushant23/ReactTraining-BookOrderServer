@@ -1,7 +1,7 @@
 const Book = require('./book.model');
 
 function get(req, res, next) {
-  Book.findById(req.params.bookId)
+  Book.get(req.params.bookId)
     .then((book) => {
       res.json(book);
     })
