@@ -5,8 +5,8 @@ const config = require('../../config/config');
 
 // sample user, used for authentication
 const user = {
-  username: 'react',
-  password: 'express'
+  username: 'training@react.com',
+  password: 'react123'
 };
 
 /**
