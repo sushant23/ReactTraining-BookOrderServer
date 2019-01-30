@@ -12,7 +12,7 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  buyersName: {
+  buyerName: {
     type: String,
     required: true
   },
