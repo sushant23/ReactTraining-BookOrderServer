@@ -10,8 +10,9 @@ function get(req, res, next) {
 
 function create(req, res, next) {
   const order = new Order({
-    address: req.body.address,
-    email: req.body.email,
+    buyerAddress: req.body.buyerAddress,
+    buyerEmail: req.body.buyerEmail,
+    buyerName: req.body.buyerName,
     book: req.body.book
   });
 
@@ -25,8 +26,9 @@ function update(req, res, next) {
   Order.findByIdAndUpdate(
     req.params.orderId,
     {
-      address: req.body.address,
-      email: req.body.email,
+      buyerAddress: req.body.buyerAddress,
+      buyerEmail: req.body.buyerEmail,
+      buyerName: req.body.buyerName,
       book: req.body.book
     },
     {},
@@ -40,13 +42,12 @@ function update(req, res, next) {
 function list(req, res, next) {
   const { limit = 50, skip = 0 } = req.query;
   Order.list({ limit, skip })
-    .then(users => res.json(users))
+    .then(orders => res.json(orders))
     .catch(e => next(e));
 }
 
 function remove(req, res, next) {
-  Order
-    .findByIdAndRemove(req.params.orderId)
+  Order.findByIdAndRemove(req.params.orderId)
     .then(deletedOrder => res.json(deletedOrder))
     .catch(e => next(e));
 }
