@@ -4,11 +4,15 @@ const httpStatus = require('http-status');
 const APIError = require('../helpers/APIError');
 
 const OrderSchema = new mongoose.Schema({
-  address: {
+  buyerAddress: {
     type: String,
     required: true
   },
-  email: {
+  buyerEmail: {
+    type: String,
+    required: true
+  },
+  buyersName: {
     type: String,
     required: true
   },
